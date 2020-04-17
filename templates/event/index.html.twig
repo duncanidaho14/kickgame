@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello ! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        {% for e in event %}
+            <a href="{{path('event.show', {'id': e.id })}}"<li>Nom: {{e.name}}</li>    
+            <li>Lieu: {{e.location}}</li>    
+            <li>A propos: {{e.description}}</li>    
+            <li><img class="img" src="{{e.image}}"/></li>    
+            <li>Capacité: {{e.capacity}}</li>    
+            <li>prix: {{e.prix}} €</li></a>    
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

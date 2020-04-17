@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie de jeux video!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+       <div class="col-sm-12"> 
+        <h1 class="titre"> {{categorie.categorie}} ! ✅</h1>
+        <img class="image_titre" src="{{categorie.image}}"/>
+       </div>
+
+        <article>
+            {% for cat in categorie.jeuxvideos %}
+                <div class="col-sm-4">
+                    <h3><a href="{{path('jeuxvideo.show', {'id': cat.id})}}">{{cat.titre}}</a></h3>
+                    <img class="img" src="{{cat.image}}"/>
+                </div>
+                <hr>
+            {% endfor %}
+            
+        </article>
+    </div>
+</div>
+{% endblock %}

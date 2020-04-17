@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JeuxvideoController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1> {{ vid.jeuxvideo.titre}} !  </h1>
+
+  
+        {% for vi in vid.video %}
+        <iframe frameborder="0" src="{{vi.video}}" style="width:540px;height:330px;border:0;margin:0;overflow:hidden;" allowfullscreen="true"></iframe>
+            
+        {% endfor %}
+    
+    
+    
+</div>
+{% endblock %}

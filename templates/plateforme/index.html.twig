@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste de console !{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+       <div class="col-sm-12"> 
+       <h1 class="titre"> Liste des consoles ! ✅</h1>
+       </div>
+
+    
+        {% for plat in platform %}
+            <div class="col-sm-4 jeuxvideo_home">
+                <img src="{{plat.image}}" class="image_home"/>
+                <a href="{{path('plateforme.show', {'id': plat.id})}}"> {{ plat.console }} </a>
+                <hr>
+            </div>
+        {% endfor %}
+    
+</div>
+{% endblock %}

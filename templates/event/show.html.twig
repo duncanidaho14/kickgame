@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie de jeux video!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+       <div class="col-sm-12"> 
+        <h1 class="titre"> {{event.name}} ! ✅</h1>
+        <img class="image_titre" src="{{event.image}}"/>
+       </div>
+
+        <article>
+            {% for eve in event.jeuxvideos %}
+                <div class="col-sm-4">
+                    <h3><a href="{{path('jeuxvideo.show', {'id': eve.id})}}">{{eve.titre}}</a></h3>
+                    <img class="img" src="{{eve.image}}"/>
+                </div>
+                <hr>
+            {% endfor %}
+            
+        </article>
+    </div>
+</div>
+{% endblock %}

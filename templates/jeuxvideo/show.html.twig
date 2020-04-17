@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JeuxvideoController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+       <div class="col-sm-4 card-title"> 
+            <h1 class="titre"> {{game.titre}} ! ✅</h1>
+            <hr>
+            <p>{{ game.description}}</p>
+            <p>Note : {{game.note}} / 10</p>
+       </div>
+       <div class="col-sm-8 card-title">
+            <img class="image_titre" src="{{game.image}}"/>
+        </div>
+        <article>
+            {% for image in game.images %}
+                <div class="col-sm-4">
+                    <img class="img" src="{{image.image}}"/>
+                    
+                </div>
+            {% endfor %}
+            <hr>
+            {% for video in game.videos %}
+                <div class="video">
+                    <iframe frameborder="0" src="{{video.video}}" style="width:540px;height:330px;border:0;margin:0;overflow:hidden;" allowfullscreen="true"></iframe>
+                </div>
+            {% endfor %}
+            <hr>
+            {% for com in game.commentaires %}
+                <div class="col-sm-4">
+                    <ul>
+                        <li>{{com.commentaire}}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </article>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste de Jeux video!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+       <div class="col-sm-12"> 
+       <h1 class="titre"> Liste de jeux video ! ✅</h1>
+       </div>
+
+            {% for ga in game %} 
+                <div class="col-sm-4 jeuxvideo_home">
+                    <img src="{{ga.image}}" class="image_home"/>
+                    <a href="{{path('jeuxvideo.show', {'id': ga.id })}}"> {{ga.titre}}</a>
+                    <hr>
+                </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

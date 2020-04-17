@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategorieController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+       <div class="col-sm-12"> 
+       <h1 class="titre"> Liste des Catégorie ! ✅</h1>
+       </div>
+   
+        {% for ca in cat %}
+            <div class="col-sm-4 categorie">
+                <img src="{{ca.image}}" class="image_categorie" style="width: 200px; height: 200px;"/>
+                <a href="{{path('categorie.show', {'id': ca.id})}}"> {{ ca.categorie }} </a>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
