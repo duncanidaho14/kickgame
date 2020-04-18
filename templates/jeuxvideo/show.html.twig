@@ -1,41 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello JeuxvideoController!{% endblock %}
+{% block title %}{{game.titre}}!{% endblock %}
 
 {% block body %}
 
 <div class="container">
     <div class="row">
-       <div class="col-sm-4 card-title"> 
-            <h1 class="titre"> {{game.titre}} ! ✅</h1>
-            <hr>
-            <p>{{ game.description}}</p>
-            <p>Note : {{game.note}} / 10</p>
-       </div>
-       <div class="col-sm-8 card-title">
-            <img class="image_titre" src="{{game.image}}"/>
-        </div>
-        <article>
-            {% for image in game.images %}
-                <div class="col-sm-4">
-                    <img class="img" src="{{image.image}}"/>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 card-title"> 
+                    <h1 class="titre"> {{game.titre}} ! ✅</h1>
+                    <hr>
+                    <p class="jeuxvideo_description">{{ game.description}}</p>
+                    <p class="jeuxvideo_note">Note : {{game.note}} / 10</p>
+                    <p class="jeuxvideo_date">date : {{game.dateSortie|date('d:m:Y') }}</p>
+                    <h3>Catégorie :</h3>
+                    {% for ga in game.categorie %}
+                    <p class="jeuxvideo_categorie">{{ga.categorie}} </p>
+                    {% endfor %}
                     
+                    <h3>Console :</h3>
+                    {% for gas in game.plateforme %} 
+                    <p class="jeuxvideo_console"> {{gas.console}} </p> {# bug #}
+                    {% endfor %}
+
+                    <h3>Evenèment :</h3>
+                    {% for ga in game.event %}
+                    <p class="jeuxvideo_name">{{ga.name}} </p>
+                    <p class="jeuxvideo_location">{{ga.location}} </p>
+                    <p class="jeuxvideo_prix">{{ga.prix}} </p>
+                    {% endfor %}
+                        
                 </div>
-            {% endfor %}
-            <hr>
-            {% for video in game.videos %}
-                <div class="video">
-                    <iframe frameborder="0" src="{{video.video}}" style="width:540px;height:330px;border:0;margin:0;overflow:hidden;" allowfullscreen="true"></iframe>
+                <div class="col-sm-6 card-title">
+                        <img class="image_titre" src="{{game.image}}"/>
+                    </div>
+                        <h3>image</h3>
+                        {% for image in game.images %}
+                            <div class="col-sm-6 jeuxvideo-show">
+                                <img class="img" src="{{image.image}}"/>
+                                <hr>  
+                            </div>
+                        {% endfor %}
+                    
+                        <hr>
+                        <h3>Video : </h3>
+                        {% for video in game.videos %}
+                            <div class="col-sm-6 video">
+                                
+                                <div>
+                                    <iframe frameborder="0" src="{{video.video}}" style="width:540px;height:330px;border:0;margin:0;overflow:hidden;" allowfullscreen="true"></iframe>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <hr>
+                        <h3>Commentaire</h3>
+                        {% for com in game.commentaires %}
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                    <img src="{{com.jeuxvideo.image}}" alt="{{com.jeuxvideo.titre}}" style="width:300px; height:200px;">
+                                    </div>
+                                    <div class="flip-card-back">
+                                    <h1>{{com.note}}</h1>
+                                    <p>{{com.commentaire|slice(0, 125)}} ...</p>
+                                    <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <hr>
+                    </div>
                 </div>
-            {% endfor %}
-            <hr>
-            {% for com in game.commentaires %}
-                <div class="col-sm-4">
-                    <ul>
-                        <li>{{com.commentaire}}</li>
-                    </ul>
-                </div>
-            {% endfor %}
+            </div>
         </article>
     </div>
 </div>
